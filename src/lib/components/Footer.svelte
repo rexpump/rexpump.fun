@@ -9,6 +9,8 @@
 </script>
 
 <footer>
+	<div class="footer-background"></div>
+	
 	<div class="footer-content">
 		<div class="footer-logo">
 			<div class="logo-icon">🦖</div>
@@ -54,14 +56,30 @@
 
 <style>
 	footer {
+		position: relative;
 		margin-top: 8rem;
 		padding: 3rem 0 2rem;
 		border-top: 1px solid rgba(177, 253, 148, 0.2);
-		background: linear-gradient(135deg, rgba(26, 25, 45, 0.3) 0%, rgba(12, 11, 26, 0.5) 100%);
-		backdrop-filter: blur(10px);
+		overflow: hidden;
+		border-radius: 20px 20px 0 0;
+	}
+
+	.footer-background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: 
+			linear-gradient(135deg, rgba(26, 25, 45, 0.9) 0%, rgba(12, 11, 26, 0.8) 100%),
+			url('/src/lib/assets/footor.png') center/cover no-repeat;
+		background-blend-mode: overlay;
+		z-index: -1;
 	}
 
 	.footer-content {
+		position: relative;
+		z-index: 2;
 		display: grid;
 		grid-template-columns: 1fr auto 1fr;
 		align-items: center;
@@ -134,6 +152,7 @@
 		color: #a0a0b0;
 		transition: all 0.3s ease;
 		text-decoration: none;
+		backdrop-filter: blur(10px);
 	}
 
 	.footer-socials a:hover {
@@ -147,9 +166,13 @@
 		height: 1px;
 		background: linear-gradient(90deg, transparent, rgba(177, 253, 148, 0.3), transparent);
 		margin: 2rem 0;
+		position: relative;
+		z-index: 2;
 	}
 
 	.footer-bottom {
+		position: relative;
+		z-index: 2;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;

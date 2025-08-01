@@ -30,7 +30,7 @@
 	:global(body) {
 		background: linear-gradient(135deg, #0c0b1a 0%, #1a1429 50%, #0c0b1a 100%);
 		color: #fff;
-		font-family: 'Inter', 'Arial', sans-serif;
+		font-family: 'IBM Plex Sans', sans-serif;
 		line-height: 1.6;
 		overflow-x: hidden;
 	}
@@ -48,6 +48,14 @@
 			radial-gradient(circle at 40% 40%, rgba(139, 59, 254, 0.05) 0%, transparent 50%);
 		pointer-events: none;
 		z-index: -1;
+	}
+
+	:global(h1, h2, h3) {
+		font-family: 'Joystix', 'IBM Plex Sans', sans-serif;
+	}
+
+	:global(code, pre) {
+		font-family: 'IBM Plex Mono', monospace;
 	}
 
 	.container {
