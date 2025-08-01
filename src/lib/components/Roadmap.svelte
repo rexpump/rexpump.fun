@@ -1,24 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
-	let roadmapRef: HTMLElement;
-	let isVisible = $state(false);
-
-	onMount(() => {
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				isVisible = entry.isIntersecting;
-			},
-			{ threshold: 0.3 }
-		);
-
-		if (roadmapRef) {
-			observer.observe(roadmapRef);
-		}
-
-		return () => observer.disconnect();
-	});
-
 	const roadmapData = [
 		{
 			stage: 'Stage 1',
@@ -65,115 +45,75 @@
 	];
 </script>
 
-<section id="roadmap" bind:this={roadmapRef}>
-	<div class="section-header" class:visible={isVisible}>
+<section id="roadmap">
+	<div class="roadmap-content">
 		<h2>ROADMAP: AROUND 12 WEEKS FROM START TO FULL LAUNCH</h2>
-	</div>
-	
-	<div class="roadmap-grid" class:visible={isVisible}>
-		{#each roadmapData as item, index}
-			<div 
-				class="roadmap-card" 
-				style="animation-delay: {index * 0.2}s"
-			>
-				<div class="card-header">
-					<h3>{item.stage}: {item.title}</h3>
-					<span class="duration">{item.duration}</span>
+		
+		<div class="roadmap-grid">
+			{#each roadmapData as item}
+				<div class="roadmap-card">
+					<div class="card-header">
+						<h3>{item.stage}: {item.title}</h3>
+						<span class="duration">{item.duration}</span>
+					</div>
+					
+					<ul class="task-list">
+						{#each item.tasks as task}
+							<li>
+								<span class="task-icon">✓</span>
+								<span class="task-text">{task}</span>
+							</li>
+						{/each}
+					</ul>
 				</div>
-				
-				<ul class="task-list">
-					{#each item.tasks as task}
-						<li>
-							<span class="task-icon">✓</span>
-							<span class="task-text">{task}</span>
-						</li>
-					{/each}
-				</ul>
-			</div>
-		{/each}
+			{/each}
+		</div>
 	</div>
 </section>
 
 <style>
 	#roadmap {
-		text-align: center;
 		position: relative;
-		padding: 4rem 0;
+		padding: 4rem 2rem;
 		background: 
-			linear-gradient(135deg, rgba(12, 11, 26, 0.8) 0%, rgba(26, 25, 45, 0.6) 100%),
-			url('/src/lib/assets/matrix.svg') center/cover no-repeat;
-		border-radius: 20px;
-		overflow: hidden;
+			linear-gradient(rgba(12, 11, 26, 0.95), rgba(12, 11, 26, 0.95)),
+			url('/src/lib/assets/matrix.svg') center/auto repeat;
+		border-radius: 16px;
+		margin: 4rem 0;
 	}
 
-	#roadmap::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(135deg, rgba(12, 11, 26, 0.8) 0%, rgba(26, 25, 45, 0.6) 100%);
-		z-index: 1;
-	}
-
-	.section-header {
-		position: relative;
-		z-index: 2;
-		margin-bottom: 4rem;
-		opacity: 0;
-		transform: translateY(30px);
-		transition: all 0.8s ease;
-	}
-
-	.section-header.visible {
-		opacity: 1;
-		transform: translateY(0);
+	.roadmap-content {
+		max-width: 1200px;
+		margin: 0 auto;
+		text-align: center;
 	}
 
 	h2 {
-		font-size: clamp(2rem, 4vw, 3rem);
+		font-size: clamp(1.8rem, 4vw, 2.5rem);
 		font-weight: 900;
-		margin-bottom: 2rem;
 		color: #fff;
+		margin-bottom: 3rem;
 		line-height: 1.3;
-		max-width: 900px;
-		margin-left: auto;
-		margin-right: auto;
 	}
 
 	.roadmap-grid {
-		position: relative;
-		z-index: 2;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 		gap: 2rem;
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0 2rem;
-	}
-
-	.roadmap-grid.visible .roadmap-card {
-		opacity: 1;
-		transform: translateY(0);
 	}
 
 	.roadmap-card {
-		background: rgba(26, 25, 45, 0.9);
+		background: rgba(26, 25, 45, 0.8);
 		border: 1px solid rgba(177, 253, 148, 0.2);
-		border-radius: 16px;
+		border-radius: 12px;
 		padding: 2rem;
 		text-align: left;
-		transition: all 0.5s ease;
-		opacity: 0;
-		transform: translateY(50px);
-		backdrop-filter: blur(10px);
+		transition: all 0.3s ease;
 	}
 
 	.roadmap-card:hover {
-		transform: translateY(-10px);
-		border-color: #B1FD94;
-		box-shadow: 0 15px 30px rgba(177, 253, 148, 0.2);
+		border-color: rgba(177, 253, 148, 0.4);
+		transform: translateY(-5px);
 	}
 
 	.card-header {
@@ -183,7 +123,7 @@
 	}
 
 	h3 {
-		font-size: 1.3rem;
+		font-size: 1.2rem;
 		font-weight: 700;
 		color: #B1FD94;
 		margin-bottom: 0.5rem;
@@ -192,13 +132,14 @@
 
 	.duration {
 		color: #a0a0b0;
-		font-size: 0.9rem;
+		font-size: 0.85rem;
 		font-weight: 500;
 	}
 
 	.task-list {
 		list-style: none;
 		padding: 0;
+		margin: 0;
 	}
 
 	.task-list li {
@@ -206,7 +147,7 @@
 		align-items: flex-start;
 		gap: 0.75rem;
 		margin-bottom: 0.75rem;
-		font-size: 0.95rem;
+		font-size: 0.9rem;
 	}
 
 	.task-icon {
@@ -224,20 +165,16 @@
 	@media (max-width: 768px) {
 		#roadmap {
 			padding: 3rem 1rem;
+			margin: 3rem 0;
 		}
 
 		.roadmap-grid {
 			grid-template-columns: 1fr;
 			gap: 1.5rem;
-			padding: 0 1rem;
 		}
 
 		.roadmap-card {
 			padding: 1.5rem;
-		}
-
-		h3 {
-			font-size: 1.2rem;
 		}
 	}
 </style>
