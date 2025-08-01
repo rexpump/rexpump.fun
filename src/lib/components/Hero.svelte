@@ -25,16 +25,23 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		width: 100vw;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
 		background: 
 			linear-gradient(rgba(12, 11, 26, 0.8), rgba(12, 11, 26, 0.8)),
 			url('/src/lib/assets/Header.png') center/cover no-repeat;
-		border-radius: 16px;
-		margin-bottom: 2rem;
+		box-shadow: inset 50px 0 100px -20px #0c0b1a, inset -50px 0 100px -20px #0c0b1a;
+		margin-bottom: 0;
 	}
 
 	.hero-content {
 		max-width: 800px;
 		margin-bottom: 3rem;
+		position: relative;
+		z-index: 1;
 	}
 
 	.hero-title {
@@ -76,7 +83,6 @@
 		transform: translateY(-2px);
 		box-shadow: 0 12px 35px rgba(218, 66, 251, 0.6);
 	}
-
 
 	@media (max-width: 768px) {
 		.hero {
