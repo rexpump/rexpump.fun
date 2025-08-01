@@ -1,62 +1,327 @@
 <script lang="ts">
-    import avelyFounder from '$lib/assets/avely-finance-founder.png';
-    import zilpayFounder from '$lib/assets/zilpay-founder.png';
-    import ivanBatalov from '$lib/assets/ivan-batalov.png';
+	import { onMount } from 'svelte';
 
-    const teamMembers = [
-        { name: 'AVELY FINANCE FOUNDER', role: 'Developer', image: avelyFounder },
-        { name: 'ZILPAY FOUNDER', role: 'Developer', image: zilpayFounder },
-        { name: 'IVAN BATALOV', role: 'Design', image: ivanBatalov }
-    ];
+	let teamRef: HTMLElement;
+	let isVisible = $state(false);
+
+	onMount(() => {
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				isVisible = entry.isIntersecting;
+			},
+			{ threshold: 0.3 }
+		);
+
+		if (teamRef) {
+			observer.observe(teamRef);
+		}
+
+		return () => observer.disconnect();
+	});
+
+	const teamMembers = [
+		{ 
+			name: 'AVELY FINANCE FOUNDER', 
+			role: 'Lead Developer', 
+			avatar: '👨‍💻',
+			color: '#B1FD94',
+			description: 'Blockchain architect with expertise in DeFi protocols'
+		},
+		{ 
+			name: 'ZILPAY FOUNDER', 
+			role: 'Core Developer', 
+			avatar: '🚀',
+			color: '#DA42FB',
+			description: 'Zilliqa ecosystem specialist and wallet technology expert'
+		},
+		{ 
+			name: 'IVAN BATALOV', 
+			role: 'UI/UX Designer', 
+			avatar: '🎨',
+			color: '#8B3BFE',
+			description: 'Creative designer focused on user experience and interface design'
+		}
+	];
 </script>
 
-<section id="team">
-    <h2>OUR TEAM</h2>
-    <div class="team-grid">
-        {#each teamMembers as member}
-            <div class="team-member">
-                <div class="team-image-container">
-                    <img src={member.image} alt={member.name} />
-                </div>
-                <h3>{member.name}</h3>
-                <p>{member.role}</p>
-            </div>
-        {/each}
-    </div>
+<section id="team" bind:this={teamRef}>
+	<div class="section-header" class:visible={isVisible}>
+		<h2>OUR TEAM</h2>
+		<p>Meet the talented individuals behind Rexpump.fun</p>
+	</div>
+	
+	<div class="team-grid" class:visible={isVisible}>
+		{#each teamMembers as member, index}
+			<div 
+				class="team-member" 
+				class:visible={isVisible}
+				style="animation-delay: {index * 0.2}s; --member-color: {member.color}"
+			>
+				<div class="member-card">
+					<div class="avatar-container">
+						<div class="avatar-background"></div>
+						<div class="avatar">{member.avatar}</div>
+						<div class="avatar-ring"></div>
+					</div>
+					
+					<div class="member-info">
+						<h3>{member.name}</h3>
+						<span class="role">{member.role}</span>
+						<p class="description">{member.description}</p>
+					</div>
+
+					<div class="social-links">
+						<a href="https://twitter.com" aria-label="Twitter" class="social-link">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+							</svg>
+						</a>
+						<a href="https://linkedin.com" aria-label="LinkedIn" class="social-link">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+							</svg>
+						</a>
+						<a href="https://github.com" aria-label="GitHub" class="social-link">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+							</svg>
+						</a>
+					</div>
+
+					<div class="card-glow"></div>
+				</div>
+			</div>
+		{/each}
+	</div>
 </section>
 
 <style>
-    #team {
-        text-align: center;
-    }
-    h2 {
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-    }
-    .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-    }
-    .team-member {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .team-image-container {
-        width: 180px;
-        height: 180px;
-        margin-bottom: 1.5rem;
-    }
-    .team-image-container img {
-        width: 100%;
-        height: 100%;
-    }
-    h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
-    p {
-        color: #a0a0b0;
-    }
+	#team {
+		text-align: center;
+		position: relative;
+		padding: 2rem 0;
+	}
+
+	.section-header {
+		margin-bottom: 4rem;
+		opacity: 0;
+		transform: translateY(30px);
+		transition: all 0.8s ease;
+	}
+
+	.section-header.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	h2 {
+		font-size: clamp(2.5rem, 5vw, 4rem);
+		font-weight: 900;
+		margin-bottom: 1rem;
+		background: linear-gradient(135deg, #fff 0%, #B1FD94 50%, #DA42FB 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.section-header p {
+		color: #a0a0b0;
+		font-size: 1.2rem;
+		max-width: 500px;
+		margin: 0 auto;
+	}
+
+	.team-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: 3rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.team-member {
+		opacity: 0;
+		transform: translateY(50px);
+		transition: all 0.8s ease;
+	}
+
+	.team-member.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.member-card {
+		position: relative;
+		background: linear-gradient(135deg, rgba(26, 25, 45, 0.9) 0%, rgba(18, 17, 35, 0.8) 100%);
+		padding: 3rem 2rem 2.5rem;
+		border-radius: 24px;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		transition: all 0.4s ease;
+		overflow: hidden;
+		backdrop-filter: blur(10px);
+		text-align: center;
+	}
+
+	.member-card:hover {
+		transform: translateY(-10px);
+		border-color: var(--member-color);
+		box-shadow: 
+			0 25px 50px rgba(0, 0, 0, 0.3),
+			0 0 0 1px var(--member-color);
+	}
+
+	.member-card:hover .card-glow {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+
+	.member-card:hover .avatar {
+		transform: scale(1.1);
+	}
+
+	.member-card:hover .avatar-ring {
+		transform: scale(1.2);
+		opacity: 1;
+	}
+
+	.avatar-container {
+		position: relative;
+		margin: 0 auto 2rem;
+		width: 120px;
+		height: 120px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.avatar-background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(135deg, var(--member-color), rgba(255, 255, 255, 0.1));
+		border-radius: 50%;
+		opacity: 0.2;
+	}
+
+	.avatar {
+		font-size: 3rem;
+		z-index: 2;
+		transition: all 0.3s ease;
+		filter: drop-shadow(0 0 15px var(--member-color));
+	}
+
+	.avatar-ring {
+		position: absolute;
+		top: -10px;
+		left: -10px;
+		right: -10px;
+		bottom: -10px;
+		border: 2px solid var(--member-color);
+		border-radius: 50%;
+		opacity: 0;
+		transition: all 0.3s ease;
+		animation: rotate 10s linear infinite;
+	}
+
+	@keyframes rotate {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+
+	.member-info h3 {
+		font-size: 1.3rem;
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+		color: #fff;
+		letter-spacing: 0.02em;
+	}
+
+	.role {
+		display: inline-block;
+		background: var(--member-color);
+		color: #0c0b1a;
+		padding: 0.4rem 1rem;
+		border-radius: 20px;
+		font-size: 0.85rem;
+		font-weight: 600;
+		margin-bottom: 1rem;
+		letter-spacing: 0.05em;
+	}
+
+	.description {
+		color: #a0a0b0;
+		line-height: 1.6;
+		font-size: 0.95rem;
+		margin-bottom: 2rem;
+		max-width: 250px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.social-links {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	.social-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.05);
+		color: #a0a0b0;
+		transition: all 0.3s ease;
+		text-decoration: none;
+	}
+
+	.social-link:hover {
+		background: var(--member-color);
+		color: #0c0b1a;
+		transform: translateY(-2px);
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	}
+
+	.card-glow {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) scale(0.8);
+		width: 200px;
+		height: 200px;
+		background: radial-gradient(circle, var(--member-color) 0%, transparent 70%);
+		opacity: 0;
+		transition: all 0.5s ease;
+		filter: blur(40px);
+		z-index: -1;
+	}
+
+	@media (max-width: 768px) {
+		.team-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+			margin: 0 1rem;
+		}
+
+		.member-card {
+			padding: 2.5rem 1.5rem 2rem;
+		}
+
+		.avatar-container {
+			width: 100px;
+			height: 100px;
+		}
+
+		.avatar {
+			font-size: 2.5rem;
+		}
+
+		.member-info h3 {
+			font-size: 1.2rem;
+		}
+	}
 </style>
