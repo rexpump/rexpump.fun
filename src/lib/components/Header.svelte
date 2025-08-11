@@ -35,7 +35,7 @@
 			<a href="https://t.me/rexpump_fun" target="_blank" rel="noreferrer">
 				<img src={telegramIcon} alt="Telegram" />
 			</a>
-			<a href="https://discord.com" target="_blank" rel="noreferrer">
+			<a href="https://discord.gg/hyjQUze7" target="_blank" rel="noreferrer">
 				<img src={discordIcon} alt="Discord" />
 			</a>
 		</div>
