@@ -9,9 +9,9 @@
 			UPCOMING MEME TOKEN LAUNCHPAD ON ZILLIQA
 		</h2>
 		
-		<button class="cta-button">
+		<a href="#contact" class="cta-button">
 			Join Waitlist
-		</button>
+		</a>
 	</div>
 </section>
 
@@ -77,6 +77,8 @@
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		box-shadow: 0 8px 25px rgba(218, 66, 251, 0.4);
+		text-decoration: none;
+		display: inline-block;
 	}
 
 	.cta-button:hover {

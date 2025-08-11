@@ -8,6 +8,11 @@
 	import Footer from '$lib/components/Footer.svelte';
 </script>
 
+<svelte:head>
+	<title>Rexpump.fun: Launch & Trade Meme Coins on Zilliqa!</title>
+	<meta name="description" content="Launch and trade meme coins on Zilliqa in minutes. No-code token creator, fair-launch tools, liquidity, live analytics and alerts. Secure and fast.">
+</svelte:head>
+
 <div class="container">
 	<Header />
 	<main>

@@ -29,10 +29,10 @@
 		<a href="#team">TEAM</a>
 		<a href="#contact">CONTACT</a>
 		<div class="socials">
-			<a href="https://twitter.com" target="_blank" rel="noreferrer">
+			<a href="https://x.com/RexPumpFun" target="_blank" rel="noreferrer">
 				<img src={twitterIcon} alt="X (Twitter)" />
 			</a>
-			<a href="https://telegram.org" target="_blank" rel="noreferrer">
+			<a href="https://t.me/rexpump_fun" target="_blank" rel="noreferrer">
 				<img src={telegramIcon} alt="Telegram" />
 			</a>
 			<a href="https://discord.com" target="_blank" rel="noreferrer">
