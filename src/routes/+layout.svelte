@@ -111,6 +111,98 @@
 				padding: 5rem 0;
 			}
 		}
+
+		/* Утилиты для адаптивной типографики в стиле Tailwind */
+		.break-words {
+			overflow-wrap: break-word;
+			word-wrap: break-word;
+		}
+
+		.break-all {
+			word-break: break-all;
+		}
+
+		.break-normal {
+			overflow-wrap: normal;
+			word-wrap: normal;
+			word-break: normal;
+		}
+
+		.leading-tight {
+			line-height: 1.25;
+		}
+
+		.tracking-tight {
+			letter-spacing: -0.025em;
+		}
+
+		.tracking-normal {
+			letter-spacing: 0em;
+		}
+
+		.tracking-wide {
+			letter-spacing: 0.025em;
+		}
+
+		.text-center {
+			text-align: center;
+		}
+
+		.mx-auto {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.max-w-xl {
+			max-width: 36rem;
+		}
+
+		.max-w-2xl {
+			max-width: 42rem;
+		}
+
+		.uppercase {
+			text-transform: uppercase;
+		}
+
+		@media (min-width: 640px) {
+			.sm\\:break-normal {
+				overflow-wrap: normal;
+				word-wrap: normal;
+				word-break: normal;
+			}
+
+			.sm\\:tracking-wide {
+				letter-spacing: 0.025em;
+			}
+
+			.sm\\:text-lg {
+				font-size: 1.125rem;
+				line-height: 1.75rem;
+			}
+
+			.sm\\:text-5xl {
+				font-size: 3rem;
+				line-height: 1;
+			}
+		}
+
+		@media (min-width: 768px) {
+			.md\\:text-6xl {
+				font-size: 3.75rem;
+				line-height: 1;
+			}
+		}
+
+		.text-base {
+			font-size: 1rem;
+			line-height: 1.5rem;
+		}
+
+		.text-4xl {
+			font-size: 2.25rem;
+			line-height: 2.5rem;
+		}
 	</style>
 </svelte:head>
 

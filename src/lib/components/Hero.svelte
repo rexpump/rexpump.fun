@@ -4,9 +4,11 @@
 <section class="hero">
 	<div class="container-x">
 		<div class="hero-content stack">
-			<h1 class="hero-title">REXPUMP.FUN</h1>
+			<h1 class="hero-title text-center mx-auto max-w-2xl break-words sm:break-normal leading-tight tracking-tight text-4xl sm:text-5xl md:text-6xl">
+				REXPUMP.<wbr>FUN
+			</h1>
 			
-			<h2 class="hero-subtitle">
+			<h2 class="hero-subtitle text-center mx-auto max-w-xl uppercase text-base sm:text-lg tracking-normal sm:tracking-wide">
 				UPCOMING MEME TOKEN LAUNCHPAD ON ZILLIQA
 			</h2>
 			
@@ -44,23 +46,17 @@
 	}
 
 	.hero-title {
-		font-size: clamp(3rem, 8vw, 5rem);
 		font-weight: 900;
 		color: #B1FD94;
 		margin: 0;
-		letter-spacing: 0.02em;
 		text-shadow: 0 0 20px rgba(177, 253, 148, 0.5);
 	}
 
 	.hero-subtitle {
-		font-size: clamp(1.2rem, 3vw, 2rem);
 		font-weight: 600;
 		color: #fff;
 		margin: 0;
 		line-height: 1.3;
-		max-width: 600px;
-		margin-left: auto;
-		margin-right: auto;
 	}
 
 	.cta-button {
