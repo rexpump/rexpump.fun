@@ -18,47 +18,56 @@
 	});
 </script>
 
-<header>
-	<div class="logo">
-		<img src={logo} alt="Rexpump Logo" />
-		<span>REXPUMP.FUN</span>
-	</div>
-
-	<nav class:open={isMenuOpen} class:mobile={isMobile}>
-		<a href="#roadmap">ROADMAP</a>
-		<a href="#team">TEAM</a>
-		<a href="#contact">CONTACT</a>
-		<div class="socials">
-			<a href="https://x.com/RexPumpFun" target="_blank" rel="noreferrer">
-				<img src={twitterIcon} alt="X (Twitter)" />
-			</a>
-			<a href="https://t.me/rexpump_fun" target="_blank" rel="noreferrer">
-				<img src={telegramIcon} alt="Telegram" />
-			</a>
-			<a href="https://discord.gg/hyjQUze7" target="_blank" rel="noreferrer">
-				<img src={discordIcon} alt="Discord" />
-			</a>
+<header class="container-x">
+	<div class="header-content">
+		<div class="logo">
+			<img src={logo} alt="Rexpump Logo" />
+			<span>REXPUMP.FUN</span>
 		</div>
-	</nav>
 
-	<button class="hamburger" class:hidden={!isMobile} onclick={() => (isMenuOpen = !isMenuOpen)} aria-label="button">
-		<span></span>
-		<span></span>
-		<span></span>
-	</button>
+		<nav id="mobile-nav" class:open={isMenuOpen} class:mobile={isMobile}>
+			<a href="#roadmap">ROADMAP</a>
+			<a href="#team">TEAM</a>
+			<a href="#contact">CONTACT</a>
+			<div class="socials">
+				<a href="https://x.com/RexPumpFun" target="_blank" rel="noreferrer">
+					<img src={twitterIcon} alt="X (Twitter)" />
+				</a>
+				<a href="https://t.me/rexpump_fun" target="_blank" rel="noreferrer">
+					<img src={telegramIcon} alt="Telegram" />
+				</a>
+				<a href="https://discord.gg/hyjQUze7" target="_blank" rel="noreferrer">
+					<img src={discordIcon} alt="Discord" />
+				</a>
+			</div>
+		</nav>
+
+		<button 
+			class="hamburger" 
+			class:hidden={!isMobile} 
+			onclick={() => (isMenuOpen = !isMenuOpen)} 
+			aria-label="Toggle navigation menu"
+			aria-expanded={isMenuOpen}
+			aria-controls="mobile-nav"
+		>
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+	</div>
 </header>
 
 <style>
 	header {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		position: relative;
+	}
+
+	.header-content {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 1rem clamp(1rem, 5vw, 2rem);
-		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-		position: relative;
-		max-width: 1400px;
-		margin: 0 auto;
-		width: 100%;
+		padding: 1rem 0;
 	}
 
 	.logo {
@@ -113,15 +122,23 @@
 		cursor: pointer;
 		display: flex;
 		flex-direction: column;
-		gap: 5px;
+		gap: 0.3rem;
 		z-index: 10;
+		padding: 0.5rem;
+		border-radius: 0.25rem;
+		transition: all 0.3s ease;
+	}
+
+	.hamburger:hover {
+		background: rgba(255, 255, 255, 0.1);
 	}
 
 	.hamburger span {
-		width: 25px;
-		height: 3px;
+		width: 1.5rem;
+		height: 0.2rem;
 		background: #ffffff;
-		transition: all 0.3s;
+		border-radius: 0.1rem;
+		transition: all 0.3s ease;
 	}
 
 	nav.mobile {
@@ -134,11 +151,35 @@
 		position: absolute;
 		top: 100%;
 		right: 0;
-		background: #0c0b1a;
-		padding: 1rem;
+		background: linear-gradient(135deg, rgba(26, 25, 45, 0.95) 0%, rgba(12, 11, 26, 0.9) 100%);
+		padding: 1.5rem;
 		border: 1px solid rgba(255, 255, 255, 0.1);
-		gap: 1rem;
+		border-radius: 0.75rem;
+		backdrop-filter: blur(20px);
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 		align-items: flex-end;
+		opacity: 1;
+		transform: translateY(0);
+		transition: all 0.3s ease;
+		min-width: 200px;
+	}
+
+	nav.mobile.open > * + * {
+		margin-top: 1rem;
+	}
+
+	nav.mobile.open a {
+		padding: 0.75rem 1rem;
+		border-radius: 0.5rem;
+		transition: all 0.3s ease;
+		min-height: 2.75rem;
+		display: flex;
+		align-items: center;
+	}
+
+	nav.mobile.open a:hover {
+		background: rgba(177, 253, 148, 0.1);
+		color: #B1FD94;
 	}
 
 	.hidden {
