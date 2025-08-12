@@ -21,54 +21,56 @@
 	});
 </script>
 
-<section class="stake-support-section" bind:this={stakeSupportRef} aria-labelledby="stake-support-heading">
-	<div class="stake-support-background"></div>
-	
-	<div class="stake-support-content" class:visible={isVisible}>
-		<div class="section-header">
-			<p class="eyebrow">{STAKE_COPY.eyebrow}</p>
-			<h2 id="stake-support-heading">{STAKE_COPY.heading}</h2>
-			<p class="subhead">{STAKE_COPY.subhead}</p>
+<section class="section--tight container-x" bind:this={stakeSupportRef} aria-labelledby="stake-support-heading">
+	<div class="stake-support-section">
+		<div class="stake-support-background"></div>
+		
+		<div class="stake-support-content stack-lg" class:visible={isVisible}>
+			<header class="section-header stack-sm">
+				<p class="eyebrow">{STAKE_COPY.eyebrow}</p>
+				<h2 id="stake-support-heading">{STAKE_COPY.heading}</h2>
+				<p class="subhead">{STAKE_COPY.subhead}</p>
+			</header>
+
+			<div class="pools-grid" class:visible={isVisible}>
+				{#each STAKE_POOLS as pool, index}
+					<article 
+						class="pool-card" 
+						class:visible={isVisible}
+						style="animation-delay: {index * 0.2}s;"
+					>
+						<div class="pool-header">
+							<h3>{pool.title}</h3>
+							<span class="pool-pill">{pool.pill}</span>
+						</div>
+
+						<p class="pool-description">{pool.description}</p>
+
+						<ul class="pool-tags">
+							{#each pool.tags as tag}
+								<li class="tag-chip">{tag}</li>
+							{/each}
+						</ul>
+
+						<div class="pool-cta">
+							<a
+								href={pool.href}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={`Open ${pool.title} staking portal in a new tab`}
+								class="cta-button"
+							>
+								{pool.ctaLabel}
+							</a>
+						</div>
+
+						<div class="card-glow"></div>
+					</article>
+				{/each}
+			</div>
+
+			<p class="disclaimer">{STAKE_COPY.disclaimer}</p>
 		</div>
-
-		<div class="pools-grid" class:visible={isVisible}>
-			{#each STAKE_POOLS as pool, index}
-				<article 
-					class="pool-card" 
-					class:visible={isVisible}
-					style="animation-delay: {index * 0.2}s;"
-				>
-					<div class="pool-header">
-						<h3>{pool.title}</h3>
-						<span class="pool-pill">{pool.pill}</span>
-					</div>
-
-					<p class="pool-description">{pool.description}</p>
-
-					<ul class="pool-tags">
-						{#each pool.tags as tag}
-							<li class="tag-chip">{tag}</li>
-						{/each}
-					</ul>
-
-					<div class="pool-cta">
-						<a
-							href={pool.href}
-							target="_blank"
-							rel="noopener noreferrer"
-							aria-label={`Open ${pool.title} staking portal in a new tab`}
-							class="cta-button"
-						>
-							{pool.ctaLabel}
-						</a>
-					</div>
-
-					<div class="card-glow"></div>
-				</article>
-			{/each}
-		</div>
-
-		<p class="disclaimer">{STAKE_COPY.disclaimer}</p>
 	</div>
 </section>
 
@@ -79,7 +81,6 @@
 		background: linear-gradient(135deg, rgba(26, 25, 45, 0.95) 0%, rgba(12, 11, 26, 0.9) 100%);
 		padding: 6rem 3rem;
 		border-radius: 24px;
-		margin: 8rem 0;
 		overflow: hidden;
 		border: 1px solid rgba(177, 253, 148, 0.2);
 		backdrop-filter: blur(20px);
@@ -113,7 +114,7 @@
 
 	.section-header {
 		max-width: 700px;
-		margin: 0 auto 4rem auto;
+		margin: 0 auto;
 	}
 
 	.eyebrow {
@@ -122,13 +123,13 @@
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
-		margin-bottom: 1rem;
+		margin: 0;
 	}
 
 	h2 {
 		font-size: clamp(2rem, 5vw, 3.5rem);
 		font-weight: 900;
-		margin-bottom: 2rem;
+		margin: 0;
 		background: linear-gradient(135deg, #fff 0%, #B1FD94 50%, #DA42FB 100%);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
@@ -149,7 +150,7 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 		gap: 2.5rem;
-		margin: 0 auto 4rem auto;
+		margin: 0 auto;
 		max-width: 800px;
 	}
 
@@ -309,9 +310,7 @@
 			padding: 2.5rem 2rem;
 		}
 
-		.section-header {
-			margin-bottom: 3rem;
-		}
+
 
 		.pool-header {
 			text-align: center;

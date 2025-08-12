@@ -14,18 +14,16 @@
 	<meta name="description" content="Launch and trade meme coins on Zilliqa in minutes. No-code token creator, fair-launch tools, liquidity, live analytics and alerts. Secure and fast.">
 </svelte:head>
 
-<div class="container">
-	<Header />
-	<main>
-		<Hero />
-		<Features />
-		<Roadmap />
-		<Team />
-		<Community />
-		<StakeSupport />
-	</main>
-	<Footer />
-</div>
+<Header />
+<main>
+	<Hero />
+	<Features />
+	<Roadmap />
+	<Team />
+	<Community />
+	<StakeSupport />
+</main>
+<Footer />
 
 <style>
 	:global(*) {
@@ -63,27 +61,5 @@
 
 	:global(code, pre) {
 		font-family: 'IBM Plex Mono', monospace;
-	}
-
-	.container {
-		max-width: 1400px;
-		margin: 0 auto;
-		padding: 0 2rem;
-	}
-
-	main {
-		display: flex;
-		flex-direction: column;
-		gap: 8rem;
-		margin-top: 2rem;
-	}
-
-	@media (max-width: 768px) {
-		.container {
-			padding: 0 1rem;
-		}
-		main {
-			gap: 4rem;
-		}
 	}
 </style>

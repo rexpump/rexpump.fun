@@ -41,41 +41,43 @@
 	];
 </script>
 
-<section id="features" class="features-section" bind:this={featuresRef}>
-	<div class="intro" class:visible={isVisible}>
-		<h2>BUILT FOR THE ZILLIQA</h2>
-		<p>Rexpump.fun offering a seamless and efficient platform for new token creation and engagement.</p>
-	</div>
-	
-	<div class="features-grid" class:visible={isVisible}>
-		{#each features as feature, index}
-			<div 
-				class="feature-card" 
-				class:visible={isVisible}
-				style="animation-delay: {index * 0.2}s; --accent-color: {feature.color}"
-			>
-				<div class="feature-icon">
-					{feature.icon}
+<section id="features" class="section container-x" bind:this={featuresRef}>
+	<div class="stack-lg">
+		<header class="intro stack-sm" class:visible={isVisible}>
+			<h2>BUILT FOR THE ZILLIQA</h2>
+			<p>Rexpump.fun offering a seamless and efficient platform for new token creation and engagement.</p>
+		</header>
+		
+		<div class="features-grid" class:visible={isVisible}>
+			{#each features as feature, index}
+				<div 
+					class="feature-card" 
+					class:visible={isVisible}
+					style="animation-delay: {index * 0.2}s; --accent-color: {feature.color}"
+				>
+					<div class="feature-icon">
+						{feature.icon}
+					</div>
+					<div class="feature-content">
+						<h3>{feature.title}</h3>
+						<p>{feature.description}</p>
+					</div>
+					<div class="feature-glow"></div>
 				</div>
-				<div class="feature-content">
-					<h3>{feature.title}</h3>
-					<p>{feature.description}</p>
-				</div>
-				<div class="feature-glow"></div>
-			</div>
-		{/each}
+			{/each}
+		</div>
 	</div>
 </section>
 
 <style>
-	.features-section {
+	#features {
 		text-align: center;
 		position: relative;
 	}
 
 	.intro {
 		max-width: 700px;
-		margin: 0 auto 4rem auto;
+		margin: 0 auto;
 		opacity: 0;
 		transform: translateY(30px);
 		transition: all 0.8s ease;
@@ -109,7 +111,6 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 		gap: 2.5rem;
-		margin-top: 3rem;
 	}
 
 	.features-grid.visible .feature-card {
@@ -196,9 +197,7 @@
 			text-align: center;
 		}
 
-		.intro {
-			margin-bottom: 3rem;
-		}
+
 	}
 
 	@media (max-width: 480px) {

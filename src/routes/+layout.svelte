@@ -52,6 +52,65 @@
 			font-weight: normal;
 			font-style: normal;
 		}
+
+		/* Глобальные токены для единого вертикального ритма */
+		.section {
+			padding: 3.5rem 0;
+		}
+
+		.section--tight {
+			padding: 2.5rem 0;
+		}
+
+		.container-x {
+			max-width: 1400px;
+			margin: 0 auto;
+			padding: 0 2rem;
+		}
+
+		.stack-sm > * + * {
+			margin-top: 0.75rem;
+		}
+
+		.stack > * + * {
+			margin-top: 1.5rem;
+		}
+
+		.stack-lg > * + * {
+			margin-top: 2rem;
+		}
+
+		@media (min-width: 640px) {
+			.section {
+				padding: 5rem 0;
+			}
+
+			.section--tight {
+				padding: 3.5rem 0;
+			}
+
+			.stack-sm > * + * {
+				margin-top: 1rem;
+			}
+
+			.stack > * + * {
+				margin-top: 2rem;
+			}
+
+			.stack-lg > * + * {
+				margin-top: 2.5rem;
+			}
+		}
+
+		@media (min-width: 1024px) {
+			.section {
+				padding: 7rem 0;
+			}
+
+			.section--tight {
+				padding: 5rem 0;
+			}
+		}
 	</style>
 </svelte:head>
 

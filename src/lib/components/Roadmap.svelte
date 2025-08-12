@@ -45,21 +45,23 @@
 	];
 </script>
 
-<section id="roadmap">
-	<div class="roadmap-content">
-		<h2>ROADMAP: AROUND 12 WEEKS FROM START TO FULL LAUNCH</h2>
-		
-		<div class="roadmap-list">
-			{#each roadmapData as item}
-				<div class="stage-item">
-					<h3>{item.stage}: {item.title} {item.duration}</h3>
-					<ul class="task-list">
-						{#each item.tasks as task}
-							<li>{task}</li>
-						{/each}
-					</ul>
-				</div>
-			{/each}
+<section id="roadmap" class="section--tight">
+	<div class="container-x">
+		<div class="roadmap-content stack-lg">
+			<h2>ROADMAP: AROUND 12 WEEKS FROM START TO FULL LAUNCH</h2>
+			
+			<div class="roadmap-list stack">
+				{#each roadmapData as item}
+					<div class="stage-item">
+						<h3>{item.stage}: {item.title} {item.duration}</h3>
+						<ul class="task-list">
+							{#each item.tasks as task}
+								<li>{task}</li>
+							{/each}
+						</ul>
+					</div>
+				{/each}
+			</div>
 		</div>
 	</div>
 </section>
@@ -72,15 +74,11 @@
 		right: 50%;
 		margin-left: -50vw;
 		margin-right: -50vw;
-		padding: 4rem 0;
 		background: linear-gradient(to right, #0c0b1a 0%, rgba(12,11,26,0.8) 30%, rgba(12,11,26,0) 60%), url('/src/lib/assets/matrix.svg') center center / 60% auto no-repeat;
 		min-height: 600px;
 	}
 
 	.roadmap-content {
-		max-width: 1400px;
-		margin: 0 auto;
-		padding: 0 clamp(1rem, 5vw, 4rem);
 		text-align: left;
 	}
 
@@ -89,7 +87,7 @@
 		font-size: clamp(1.8rem, 4vw, 2.5rem);
 		font-weight: 900;
 		color: #fff;
-		margin-bottom: 2rem;
+		margin: 0;
 		line-height: 1.2;
 		letter-spacing: 0.05em;
 	}
@@ -99,7 +97,7 @@
 	}
 
 	.stage-item {
-		margin-bottom: 1.5rem;
+		margin: 0;
 	}
 
 	h3 {
@@ -107,7 +105,7 @@
 		font-size: 1.1rem;
 		font-weight: 600;
 		color: #fff;
-		margin-bottom: 0.5rem;
+		margin: 0 0 0.5rem 0;
 	}
 
 	.task-list {
@@ -134,13 +132,8 @@
 
 	@media (max-width: 768px) {
 		#roadmap {
-			padding: 3rem 0;
 			background: linear-gradient(rgba(12,11,26,0.95), rgba(12,11,26,0.95)), url('/src/lib/assets/matrix.svg') center center / contain no-repeat;
 			min-height: 800px;
-		}
-
-		.roadmap-content {
-			padding: 0 1.5rem;
 		}
 
 		.roadmap-list {
