@@ -21,7 +21,7 @@
 
 	const teamMembers = [
 		{ 
-			name: 'AVELY FINANCE FOUNDER', 
+			name: 'AVELY FOUNDER', 
 			role: 'Lead Developer', 
 			avatar: '👨‍💻',
 			color: '#B1FD94',
