@@ -10,7 +10,7 @@
 		</h2>
 		
 		<a href="#contact" class="cta-button">
-			Join Waitlist
+			Join Community
 		</a>
 	</div>
 </section>
