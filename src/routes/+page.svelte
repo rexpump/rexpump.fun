@@ -5,6 +5,7 @@
 	import Roadmap from '$lib/components/Roadmap.svelte';
 	import Team from '$lib/components/Team.svelte';
 	import Community from '$lib/components/Community.svelte';
+	import StakeSupport from '$lib/components/StakeSupport.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 </script>
 
@@ -21,6 +22,7 @@
 		<Roadmap />
 		<Team />
 		<Community />
+		<StakeSupport />
 	</main>
 	<Footer />
 </div>
