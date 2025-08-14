@@ -21,19 +21,19 @@
 
 	const features = [
 		{
-			icon: '🔒',
+			icon: '◉',
 			title: 'Open-Source Architecture',
 			description: 'The Rexpump.fun protocol is fully open-source and will undergo external comprehensive audits for maximum transparency.',
 			color: '#B1FD94'
 		},
 		{
-			icon: '🎨',
+			icon: '◈',
 			title: 'User-Friendly Interface',
 			description: 'Creating and launching a meme token is as simple as filling out a form with insights for platform users.',
 			color: '#DA42FB'
 		},
 		{
-			icon: '🛡️',
+			icon: '◆',
 			title: 'Enhanced Security',
 			description: 'Each created contract is an exact copy of the audited base contract, ensuring a secure & safe environment.',
 			color: '#8B3BFE'
