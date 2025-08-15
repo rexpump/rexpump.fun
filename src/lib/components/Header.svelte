@@ -112,10 +112,6 @@
 		gap: clamp(0.5rem, 2vw, 1rem);
 	}
 
-	.socials img {
-		height: clamp(16px, 4vw, 20px);
-	}
-
 	.hamburger {
 		background: none;
 		border: none;

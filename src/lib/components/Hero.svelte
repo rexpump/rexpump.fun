@@ -35,7 +35,7 @@
 		margin-right: -50vw;
 		background: 
 			linear-gradient(rgba(12, 11, 26, 0.8), rgba(12, 11, 26, 0.8)),
-			url('/src/lib/assets/Header.png') center/cover no-repeat;
+			url('/src/lib/assets/Header.webp') center/cover no-repeat;
 		box-shadow: inset 50px 0 100px -20px #0c0b1a, inset -50px 0 100px -20px #0c0b1a;
 	}
 

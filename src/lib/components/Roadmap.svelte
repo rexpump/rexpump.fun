@@ -74,7 +74,7 @@
 		right: 50%;
 		margin-left: -50vw;
 		margin-right: -50vw;
-		background: linear-gradient(to right, #0c0b1a 0%, rgba(12,11,26,0.8) 30%, rgba(12,11,26,0) 60%), url('/src/lib/assets/matrix.svg') center center / 60% auto no-repeat;
+		background: linear-gradient(to right, #0c0b1a 0%, rgba(12,11,26,0.8) 30%, rgba(12,11,26,0) 60%), url('/src/lib/assets/matrix.svg') center center / 100% auto no-repeat;
 		min-height: 600px;
 	}
 
